@@ -1,0 +1,12 @@
+
+
+.calc-wrap {
+  width: 20vw;
+  height: 30vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.zero {
+  grid-column: span 2;
+}
