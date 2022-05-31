@@ -42,7 +42,28 @@ console.log(operatingFunc('-', 21.35, 34.45));
 console.log(operatingFunc('*', 21.35, 34.45));
 console.log(operatingFunc('/', 21.35, 34.45));
 
+// Create the functions that populate the display when 
+// you click the number buttons… you should be storing the 
+// ‘display value’ in a variable somewhere for use in the next step.
 
 
+const btn_clear = document.querySelector('.ac');
+const btn_sign = document.querySelector('.sign');
+const btn_perc = document.querySelector('.perc');
+const btn_add = document.querySelector('.add');
+const btn_7 = document.querySelector('.7');
+const btn_8 = document.querySelector('.8');
+const btn_9 = document.querySelector('.9');
+const btn_sub = document.querySelector('.sub');
+const btn_4 = document.querySelector('.4');
+const btn_5 = document.querySelector('.5');
+const btn_6 = document.querySelector('.6');
+const btn_multi = document.querySelector('.multi');
+const btn_1 = document.querySelector('.1');
+const btn_2 = document.querySelector('.2');
+const btn_3 = document.querySelector('.3');
+const btn_divide = document.querySelector('.divide');
+const btn_0 = document.querySelector('.zero');
+const btn_deci = document.querySelector('.deci');
+const btn_equals = document.querySelector('.equals');
 
-// Create a basic HTML calculator with buttons for each digit, each of the above functions and an “Equals” key.
