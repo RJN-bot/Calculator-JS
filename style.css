@@ -26,6 +26,7 @@ body {
   grid-column: span 2;
 }
 
+
 .calc-wrap button {
   background-color: rgba(255, 255, 255, 0.75);
   outline: none;
