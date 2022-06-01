@@ -34,6 +34,9 @@ const operatingFunc = (operator, num1, num2) => {
             break;
 
     }
+
+    result = Math.round(result * 100) / 100;
+
     return result;
 }
 
@@ -46,13 +49,13 @@ const btn_clear = document.querySelector('.clear');
 const btn_sign = document.querySelector('.sign');
 const btn_deci = document.querySelector('.deci');
 const btn_equals = document.querySelector('.equals');
-
-
 const dataNums = document.querySelectorAll('[data-number]');
 const dataOperations = document.querySelectorAll('[data-operator]')
 
+
 btn_clear.addEventListener('click', () => {
     currentOperand.textContent = '';
+    previousOperand.textContent = '';
 });
 
 dataNums.forEach(num => {
@@ -64,7 +67,7 @@ dataNums.forEach(num => {
 let currentOperator = '';
 dataOperations.forEach((oper) => {
     oper.addEventListener('click', () => {
-        previousNum = parseInt(currentOperand.textContent);
+        previousNum = parseFloat(currentOperand.textContent);
         previousOperand.textContent = previousNum;
         currentOperand.textContent = '';
         console.log(previousNum);
@@ -74,9 +77,9 @@ dataOperations.forEach((oper) => {
 })
 
 btn_equals.addEventListener('click', () => {
-    currentNum = parseInt(currentOperand.textContent);
+    currentNum = parseFloat(currentOperand.textContent);
     let operatedResult = operatingFunc(currentOperator, previousNum, currentNum)
     console.log(operatedResult);
     currentOperand.textContent = operatedResult
-
+    previousOperand.textContent = '';
 });
