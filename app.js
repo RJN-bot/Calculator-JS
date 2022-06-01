@@ -1,9 +1,9 @@
-// Contain functions for all of the basic math operators
-
-// const add = (num1, num2) => num1 + num2;
-// const subtract = (num1, num2) => num1 - num2;
-// const multiply = (num1, num2) => num1 * num2;
-// const divide = (num1, num2) => num1 / num2;
+let currentNum = '';
+let previousNum = '';
+const previousOperand = document.querySelector('.previous-operand')
+const currentOperand = document.querySelector('.current-operand')
+currentOperand.textContent = '';
+previousOperand.textContent = '';
 
 const operationsObj = {
     add: (num1, num2) => num1 + num2,
@@ -23,10 +23,10 @@ const operatingFunc = (operator, num1, num2) => {
         case '-':
             result = operationsObj.sub(num1, num2);
             break;
-        case '*':
+        case 'x':
             result = operationsObj.multi(num1, num2);
             break;
-        case '/':
+        case '÷':
             result = operationsObj.divide(num1, num2);
             break;
 
@@ -37,72 +37,47 @@ const operatingFunc = (operator, num1, num2) => {
     return result;
 }
 
-console.log(operatingFunc('+', 21.35, 34.45));
-console.log(operatingFunc('-', 21.35, 34.45));
-console.log(operatingFunc('*', 21.35, 34.45));
-console.log(operatingFunc('/', 21.35, 34.45));
-
 // Create the functions that populate the display when 
 // you click the number buttons… you should be storing the 
 // ‘display value’ in a variable somewhere for use in the next step.
 
 
-const btn_clear = document.querySelector('.ac');
+const btn_clear = document.querySelector('.clear');
 const btn_sign = document.querySelector('.sign');
-const btn_perc = document.querySelector('.perc');
-const btn_add = document.querySelector('.add');
-const btn_7 = document.querySelector('.btn_7');
-const btn_8 = document.querySelector('.btn_8');
-const btn_9 = document.querySelector('.btn_9');
-const btn_sub = document.querySelector('.sub');
-const btn_4 = document.querySelector('.btn_4');
-const btn_5 = document.querySelector('.btn_5');
-const btn_6 = document.querySelector('.btn_6');
-const btn_multi = document.querySelector('.multi');
-const btn_1 = document.querySelector('.btn_1');
-const btn_2 = document.querySelector('.btn_2');
-const btn_3 = document.querySelector('.btn_3');
-const btn_divide = document.querySelector('.divide');
-const btn_0 = document.querySelector('.zero');
 const btn_deci = document.querySelector('.deci');
 const btn_equals = document.querySelector('.equals');
 
 
-btn_1.addEventListener('click', () => {
-});
-btn_2.addEventListener('click', () => {
-});
-btn_3.addEventListener('click', () => {
-});
-btn_4.addEventListener('click', () => {
-});
-btn_5.addEventListener('click', () => {
-});
-btn_6.addEventListener('click', () => {
-});
-btn_7.addEventListener('click', () => {
-});
-btn_8.addEventListener('click', () => {
-});
-btn_9.addEventListener('click', () => {
-});
-btn_0.addEventListener('click', () => {
-});
+const dataNums = document.querySelectorAll('[data-number]');
+const dataOperations = document.querySelectorAll('[data-operator]')
+
 btn_clear.addEventListener('click', () => {
+    currentOperand.textContent = '';
 });
-btn_sign.addEventListener('click', () => {
+
+dataNums.forEach(num => {
+    num.addEventListener('click', () => {
+        currentOperand.append(num.textContent);
+    })
 });
-btn_perc.addEventListener('click', () => {
-});
-btn_add.addEventListener('click', () => {
-});
-btn_sub.addEventListener('click', () => {
-});
-btn_multi.addEventListener('click', () => {
-});
-btn_divide.addEventListener('click', () => {
-});
-btn_deci.addEventListener('click', () => {
-});
+
+let currentOperator = '';
+dataOperations.forEach((oper) => {
+    oper.addEventListener('click', () => {
+        previousNum = parseInt(currentOperand.textContent);
+        previousOperand.textContent = previousNum;
+        currentOperand.textContent = '';
+        console.log(previousNum);
+        currentOperator = oper.textContent;
+        console.log(currentOperator);
+    })
+})
+
+
 btn_equals.addEventListener('click', () => {
+    currentNum = parseInt(currentOperand.textContent);
+    let operatedResult = operatingFunc(currentOperator, previousNum, currentNum)
+    console.log(operatedResult);
+    currentOperand.textContent = operatedResult
+
 });

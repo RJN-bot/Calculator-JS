@@ -8,33 +8,38 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+
 </head>
 
 <body>
     <div class="container">
         <div class="calc-wrap">
-            <button class="ac">AC</button>
+            <div class="result">
+                <div class="previous-operand"></div>
+                <div class="current-operand"></div>
+            </div>
+            <button class="clear">AC</button>
             <button class="sign">+/-</button>
-            <button class="perc">%</button>
-            <button class="add">+</button>
-            <button class="btn_7">7</button>
-            <button class="btn_8">8</button>
-            <button class="btn_9">9</button>
-            <button class="sub">-</button>
-            <button class="btn_4">4</button>
-            <button class="btn_5">5</button>
-            <button class="btn_6">6</button>
-            <button class="multi">x</button>
-            <button class="btn_1">1</button>
-            <button class="btn_2">2</button>
-            <button class="btn_3">3</button>
-            <button class="divide">/</button>
-            <button class="zero">0</button>
+            <button data-operator>%</button>
+            <button data-operator>+</button>
+            <button data-number>7</button>
+            <button data-number>8</button>
+            <button data-number>9</button>
+            <button data-operator>-</button>
+            <button data-number>4</button>
+            <button data-number>5</button>
+            <button data-number>6</button>
+            <button data-operator>x</button>
+            <button data-number>1</button>
+            <button data-number>2</button>
+            <button data-number>3</button>
+            <button data-operator>÷</button>
+            <button data-number class="zero">0</button>
             <button class="deci">.</button>
             <button class="equals">=</button>
         </div>
     </div>
-    <script src="./app.js"></script>btn_
 </body>
 
 </html>
