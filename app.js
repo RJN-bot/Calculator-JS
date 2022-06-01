@@ -73,7 +73,6 @@ dataOperations.forEach((oper) => {
     })
 })
 
-
 btn_equals.addEventListener('click', () => {
     currentNum = parseInt(currentOperand.textContent);
     let operatedResult = operatingFunc(currentOperator, previousNum, currentNum)
