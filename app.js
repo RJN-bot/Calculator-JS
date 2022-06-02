@@ -12,8 +12,6 @@ const operationsObj = {
     divide: (num1, num2) => num1 / num2,
 }
 
-// Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
-
 const operatingFunc = (operator, num1, num2) => {
     let result = 0;
     switch (operator) {
@@ -32,18 +30,11 @@ const operatingFunc = (operator, num1, num2) => {
 
         default:
             break;
-
     }
 
     result = Math.round(result * 100) / 100;
-
     return result;
 }
-
-// Create the functions that populate the display when 
-// you click the number buttons… you should be storing the 
-// ‘display value’ in a variable somewhere for use in the next step.
-
 
 const btn_clear = document.querySelector('.clear');
 const btn_sign = document.querySelector('.sign');
@@ -52,10 +43,11 @@ const btn_equals = document.querySelector('.equals');
 const dataNums = document.querySelectorAll('[data-number]');
 const dataOperations = document.querySelectorAll('[data-operator]')
 
-
 btn_clear.addEventListener('click', () => {
     currentOperand.textContent = '';
     previousOperand.textContent = '';
+    currentNum = '';
+    previousNum = '';
 });
 
 dataNums.forEach(num => {
@@ -63,51 +55,31 @@ dataNums.forEach(num => {
         currentOperand.append(num.textContent);
     })
 });
-
+let currentOperator = '';
+let previousOperator = '';
 dataOperations.forEach((oper) => {
-
     oper.addEventListener('click', () => {
-
-        let currentOperator = oper.textContent;
-        previousNum = parseFloat(previousOperand.textContent);
-        currentNum = parseFloat(currentOperand.textContent);
-
-
+        previousOperator = currentOperator;
+        currentOperator = oper.textContent;
         if (previousNum !== '') {
-            console.log(previousNum);
-            let operatedResult = operatingFunc(currentOperator, previousNum, currentNum);
-            previousOperand.textContent = operatedResult;
-            currentOperand.textContent = '';
-
-
+            previousNum = parseFloat(previousOperand.textContent);
+            currentNum = parseFloat(currentOperand.textContent);
+            let operatedResult = operatingFunc(previousOperator, previousNum, currentNum)
+            currentOperand.textContent = operatedResult;
         }
-
-
-
-
-        else {
-
-
-        }
-
-
-
-        // currentOperand.textContent = '';
+        previousNum = parseFloat(currentOperand.textContent);
         previousOperand.textContent = previousNum;
-        // console.log(currentOperator);
-
-        console.log(currentNum, previousNum, currentOperator);
-
+        currentOperand.textContent = '';
+        console.log(previousNum);
+        i++;
     })
-})
-
-// Top 10 Reasons NOT to Move to Australia
-
+});
 
 btn_equals.addEventListener('click', () => {
     currentNum = parseFloat(currentOperand.textContent);
     let operatedResult = operatingFunc(currentOperator, previousNum, currentNum)
-    // console.log(operatedResult);
     currentOperand.textContent = operatedResult
     previousOperand.textContent = '';
 });
+
+// 12 + 7 - 5 * 3 = should yield 42
