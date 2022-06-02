@@ -71,7 +71,6 @@ dataOperations.forEach((oper) => {
         previousOperand.textContent = previousNum;
         currentOperand.textContent = '';
         console.log(previousNum);
-        i++;
     })
 });
 
