@@ -13,13 +13,20 @@ body {
   padding: 0;
 }
 
-.calc-wrap {
+.container {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calc-wrap {
   display: grid;
   justify-content: center;
   align-content: center;
   grid-template-columns: repeat(4, 3rem);
   grid-template-rows: minmax(3rem, auto) repeat(5, 3rem);
+  box-shadow: 0rem 0rem 2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 
 .span-two {

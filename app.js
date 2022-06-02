@@ -64,22 +64,50 @@ dataNums.forEach(num => {
     })
 });
 
-let currentOperator = '';
 dataOperations.forEach((oper) => {
+
     oper.addEventListener('click', () => {
-        previousNum = parseFloat(currentOperand.textContent);
+
+        let currentOperator = oper.textContent;
+        previousNum = parseFloat(previousOperand.textContent);
+        currentNum = parseFloat(currentOperand.textContent);
+
+
+        if (previousNum !== '') {
+            console.log(previousNum);
+            let operatedResult = operatingFunc(currentOperator, previousNum, currentNum);
+            previousOperand.textContent = operatedResult;
+            currentOperand.textContent = '';
+
+
+        }
+
+
+
+
+        else {
+
+
+        }
+
+
+
+        // currentOperand.textContent = '';
         previousOperand.textContent = previousNum;
-        currentOperand.textContent = '';
-        console.log(previousNum);
-        currentOperator = oper.textContent;
-        console.log(currentOperator);
+        // console.log(currentOperator);
+
+        console.log(currentNum, previousNum, currentOperator);
+
     })
 })
+
+// Top 10 Reasons NOT to Move to Australia
+
 
 btn_equals.addEventListener('click', () => {
     currentNum = parseFloat(currentOperand.textContent);
     let operatedResult = operatingFunc(currentOperator, previousNum, currentNum)
-    console.log(operatedResult);
+    // console.log(operatedResult);
     currentOperand.textContent = operatedResult
     previousOperand.textContent = '';
 });
